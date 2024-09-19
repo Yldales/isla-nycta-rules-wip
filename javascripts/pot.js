@@ -10,8 +10,12 @@ document$.subscribe(function () {
     const elements = document.querySelectorAll('.md-content li');
 
     elements.forEach((span) => {
+
+        // Ignore if there is a <a> tag inside.
+        if (span.querySelector('a')) return;
+
         const newContent = span.innerHTML.replace(dinosaurRegex, (match) => {
-            const tier = DINOSAUR_NAMES[match.toLowerCase()]; // Convert match to lowercase
+            const tier = DINOSAUR_NAMES[match.toLowerCase()];
             return `
           <span class="tier-wrapper">
             <span class="tier-name">
