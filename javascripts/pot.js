@@ -1,4 +1,4 @@
-const DINOSAUR_NAMES = { "Achillobator": 2, "Acrocanthosaurus": 4, "Albertaceratops": 2, "Alioramus": 2, "Allosaurus": 3, "Amargasaurus": 3, "Ampelosaurus": 4, "Anodontosaurus": 3, "Apatosaurus": 4, "Argentinosaurus": 5, "Barsboldia": 4, "Camptosaurus": 1, "Carnotaurus": 2, "Ceratosaurus": 2, "Citipati": 2, "Compsognathus": 0, "Concavenator": 2, "Daspletosaurus": 3, "Deinocheirus": 4, "Deinonychus": 1, "Deinosuchus": 4, "Dilophosaurus": 2, "Dimetrodon": 3, "Dracoviper": 3, "Dryosaurus": 0, "Eotriceratops": 4, "Eurhinosaurus": 2, "Giganotosaurus": 4, "Hatzegopteryx": 2, "Iguanodon": 3, "Kaiwhekea": 2, "Kaprosuchus": 2, "Kelenken": 2, "Kentrosaurus": 2, "Kryptops": 3, "Lambeosaurus": 2, "Latenivenatrix": 1, "Maip": 3, "Megalania": 2, "Metriacanthosaurus": 2, "Miragaia": 3, "Moraquile": 4, "Mosasaurus": 4, "Nasutoceratops": 3, "Noviana": 3, "Nyctatyrannus": 3, "Ocepechelon": 3, "Ophis": 4, "Pachycephalosaurus": 2, "Parasaurolophus": 4, "Psittacosaurus": 1, "Pycnonemosaurus": 3, "Quetzalcoatlus": 2, "Rhamphorhynchus": 0, "Sachicasaurus": 4, "Sarcosuchus": 3, "Smilodon": 2, "Spinosaurus": 4, "Stegosaurus": 3, "Struthiomimus": 1, "Styracosaurus": 2, "Suchomimus": 3, "Susecdurus": 3, "Thalassodromeus": 1, "Therizinosaurus": 3, "Tyrannosaurus": 4, "Utahraptor": 2, "Yunnanosaurus": 3, "Yutyrannus": 3 }
+const DINOSAUR_NAMES = { "achillobator": 2, "acrocanthosaurus": 4, "albertaceratops": 2, "alioramus": 2, "allosaurus": 3, "amargasaurus": 3, "ampelosaurus": 4, "anodontosaurus": 3, "apatosaurus": 4, "argentinosaurus": 5, "barsboldia": 4, "camptosaurus": 1, "carnotaurus": 2, "ceratosaurus": 2, "citipati": 2, "compsognathus": 0, "concavenator": 2, "daspletosaurus": 3, "deinocheirus": 4, "deinonychus": 1, "deinosuchus": 4, "dilophosaurus": 2, "dimetrodon": 3, "dracoviper": 3, "dryosaurus": 0, "eotriceratops": 4, "eurhinosaurus": 2, "giganotosaurus": 4, "hatzegopteryx": 2, "iguanodon": 3, "kaiwhekea": 2, "kaprosuchus": 2, "kelenken": 2, "kentrosaurus": 2, "kryptops": 3, "lambeosaurus": 2, "latenivenatrix": 1, "maip": 3, "megalania": 2, "metriacanthosaurus": 2, "miragaia": 3, "moraquile": 4, "mosasaurus": 4, "nasutoceratops": 3, "noviana": 3, "nyctatyrannus": 3, "ocepechelon": 3, "ophis": 4, "pachycephalosaurus": 2, "parasaurolophus": 4, "psittacosaurus": 1, "pycnonemosaurus": 3, "quetzalcoatlus": 2, "rhamphorhynchus": 0, "sachicasaurus": 4, "sarcosuchus": 3, "smilodon": 2, "spinosaurus": 4, "stegosaurus": 3, "struthiomimus": 1, "styracosaurus": 2, "suchomimus": 3, "susecdurus": 3, "thalassodromeus": 1, "therizinosaurus": 3, "tyrannosaurus": 4, "utahraptor": 2, "yunnanosaurus": 3, "yutyrannus": 3 }
 
 /**
  * Add tiers after each dinosaur name, because.
@@ -6,33 +6,27 @@ const DINOSAUR_NAMES = { "Achillobator": 2, "Acrocanthosaurus": 4, "Albertacerat
 
 document$.subscribe(function () {
 
-    Object.entries(DINOSAUR_NAMES).forEach(([name, tier]) => {
+    const dinosaurRegex = new RegExp(Object.keys(DINOSAUR_NAMES).join('|'), 'gi');
+    const elements = document.querySelectorAll('.md-content li');
 
-        const regex = new RegExp(name, 'gi');
-        const elements = document.querySelectorAll('.md-content li');
-
-        elements.forEach(span => {
-
-            if (!regex.test(span.textContent)) return;
-
-            console.log(span);
-
-            // Put the occurrence in a flexible span.
-            const newContent = span.textContent.replace(regex, match => `
-                <span class="tier-wrapper">
-                    <span class="tier-name">
-                        <a href="/docs/dinos/${name.toLowerCase()}">
-                            ${match}
-                        </a>
-                    </span>
-                    <span class="tier-badge tier-${tier}">
-                        ${tier}
-                    </span>
-                </span>
-            `);
-            span.innerHTML = newContent;
-
+    elements.forEach((span) => {
+        const newContent = span.innerHTML.replace(dinosaurRegex, (match) => {
+            const tier = DINOSAUR_NAMES[match.toLowerCase()]; // Convert match to lowercase
+            return `
+          <span class="tier-wrapper">
+            <span class="tier-name">
+              <a href="/docs/dinos/${match.toLowerCase()}">
+                ${match}
+              </a>
+            </span>
+            <span class="tier-badge tier-${tier}">
+              ${tier}
+            </span>
+          </span>
+        `;
         });
+
+        span.innerHTML = newContent;
     });
 
 });
@@ -53,7 +47,7 @@ document$.subscribe(function () {
         if (!DINOSAUR_NAMES[dinosaurName]) return;
 
         const img_path = `/assets/images/dinos/${dinosaurName.toLowerCase()}.webp`;
-        
+
         const img = new Image();
         img.src = img_path;
 
