@@ -1,7 +1,7 @@
 {
     "name": "Isla Nycta Rules & Profiles",
     "short_name": "isla-nycta-rules-profiles",
-    "start_url": "/index.html",
+    "start_url": "https://yldales.github.io/isla-nycta-rules-wip/",
     "display": "standalone",
     "background_color": "#513ebe",
     "theme_color": "#111111",
@@ -16,6 +16,12 @@
             "src": "assets/icons/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "🦖 Path of Titans",
+            "url": "https://yldales.github.io/isla-nycta-rules-wip/pot/index.html"
         }
     ],
     "scope": "/"
