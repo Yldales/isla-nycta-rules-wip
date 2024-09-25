@@ -2,16 +2,16 @@ const DINOSAUR_NAMES = { "achillobator": 2, "acrocanthosaurus": 4, "albertacerat
 
 document$.subscribe(function () {
 
-    const dinosaurRegex = new RegExp(Object.keys(DINOSAUR_NAMES).join('|'), 'gi');
-    const elements = document.querySelectorAll('.md-content li');
+  const dinosaurRegex = new RegExp(Object.keys(DINOSAUR_NAMES).join('|'), 'gi');
+  const elements = document.querySelectorAll('.md-content');
 
-    elements.forEach((span) => {
+  elements.forEach((span) => {
 
-        if (span.querySelector('a')) return;
+    if (span.querySelector('a')) return;
 
-        const newContent = span.innerHTML.replace(dinosaurRegex, (match) => {
-            const tier = DINOSAUR_NAMES[match.toLowerCase()];
-            return `
+    const newContent = span.innerHTML.replace(dinosaurRegex, (match) => {
+      const tier = DINOSAUR_NAMES[match.toLowerCase()];
+      return `
           <span class="tier-wrapper">
             <span class="tier-name">
               <a href="/docs/dinos/${match.toLowerCase()}">
@@ -23,10 +23,10 @@ document$.subscribe(function () {
             </span>
           </span>
         `;
-        });
-
-        span.innerHTML = newContent;
     });
+
+    span.innerHTML = newContent;
+  });
 
 });
 
@@ -36,25 +36,25 @@ document$.subscribe(function () {
 
 document$.subscribe(function () {
 
-    document.querySelectorAll('li.md-nav__item span.md-ellipsis').forEach(span => {
+  document.querySelectorAll('li.md-nav__item span.md-ellipsis').forEach(span => {
 
-        const text = span.textContent.match(/[a-zA-Z]/g);
+    const text = span.textContent.match(/[a-zA-Z]/g);
 
-        if (!text) return;
+    if (!text) return;
 
-        const dinosaurName = text.join('');
-        if (!DINOSAUR_NAMES[dinosaurName]) return;
+    const dinosaurName = text.join('');
+    if (!DINOSAUR_NAMES[dinosaurName]) return;
 
-        const img_path = `/assets/images/dinos/${dinosaurName.toLowerCase()}.webp`;
+    const img_path = `/assets/images/dinos/${dinosaurName.toLowerCase()}.webp`;
 
-        const img = new Image();
-        img.src = img_path;
+    const img = new Image();
+    img.src = img_path;
 
-        img.onload = () => {
-            img.width = 16;
-            img.height = 16;
-            span.parentNode.insertBefore(img, span);
-        };
+    img.onload = () => {
+      img.width = 16;
+      img.height = 16;
+      span.parentNode.insertBefore(img, span);
+    };
 
-    });
+  });
 });
