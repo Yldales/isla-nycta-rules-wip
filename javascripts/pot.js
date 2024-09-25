@@ -7,8 +7,6 @@ document$.subscribe(function () {
 
   elements.forEach((span) => {
 
-    if (span.querySelector('a')) return;
-
     const newContent = span.innerHTML.replace(dinosaurRegex, (match) => {
       const tier = DINOSAUR_NAMES[match.toLowerCase()];
       return `
