@@ -3,10 +3,10 @@ const DINOSAUR_NAMES = { "achillobator": 2, "acrocanthosaurus": 4, "albertacerat
 document$.subscribe(function () {
 
   const dinosaurRegex = new RegExp(Object.keys(DINOSAUR_NAMES).join('|'), 'gi');
-  const elements = document.querySelectorAll('.md-content');
+  const elements = document.querySelectorAll('.md-content p, .md-content ul');
 
   elements.forEach((span) => {
-
+ 
     const newContent = span.innerHTML.replace(dinosaurRegex, (match) => {
       const tier = DINOSAUR_NAMES[match.toLowerCase()];
       return `
