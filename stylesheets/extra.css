@@ -152,7 +152,7 @@ div#md-header-nycta {
 div#md-header-nycta>div {
     font-size: 1.25em;
     overflow: hidden;
-    padding: 0.25em;
+    padding: 0.5em;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
