@@ -1,31 +1,30 @@
-const DINOSAUR_NAMES = { "achillobator": 2, "acrocanthosaurus": 4, "albertaceratops": 2, "alioramus": 2, "allosaurus": 3, "amargasaurus": 3, "ampelosaurus": 4, "anodontosaurus": 3, "apatosaurus": 4, "argentinosaurus": 5, "barsboldia": 4, "camptosaurus": 1, "carnotaurus": 2, "ceratosaurus": 2, "citipati": 2, "compsognathus": 0, "concavenator": 2, "daspletosaurus": 3, "deinocheirus": 4, "deinonychus": 1, "deinosuchus": 4, "dilophosaurus": 2, "dimetrodon": 3, "dracoviper": 3, "dryosaurus": 0, "eotriceratops": 4, "eurhinosaurus": 2, "giganotosaurus": 4, "hatzegopteryx": 2, "iguanodon": 3, "kaiwhekea": 2, "kaprosuchus": 2, "kelenken": 2, "kentrosaurus": 2, "kryptops": 3, "lambeosaurus": 2, "latenivenatrix": 1, "maip": 3, "megalania": 2, "metriacanthosaurus": 2, "miragaia": 3, "moraquile": 4, "mosasaurus": 4, "nasutoceratops": 3, "noviana": 3, "nyctatyrannus": 3, "ocepechelon": 3, "ophis": 4, "pachycephalosaurus": 2, "parasaurolophus": 4, "psittacosaurus": 1, "pycnonemosaurus": 3, "quetzalcoatlus": 2, "rhamphorhynchus": 0, "sachicasaurus": 4, "sarcosuchus": 3, "smilodon": 2, "spinosaurus": 4, "stegosaurus": 3, "struthiomimus": 1, "styracosaurus": 2, "suchomimus": 3, "susecdurus": 3, "thalassodromeus": 1, "therizinosaurus": 3, "tyrannosaurus": 4, "utahraptor": 2, "yunnanosaurus": 3, "yutyrannus": 3 }
+const DINOSAUR_NAMES = {"achillobator": {"type": "carnivores", "tier": 2}, "acrocanthosaurus": {"type": "carnivores", "tier": 4}, "albertaceratops": {"type": "herbivores", "tier": 2}, "alioramus": {"type": "carnivores", "tier": 2}, "allosaurus": {"type": "carnivores", "tier": 3}, "amargasaurus": {"type": "herbivores", "tier": 3}, "ampelosaurus": {"type": "herbivores", "tier": 4}, "anodontosaurus": {"type": "herbivores", "tier": 3}, "apatosaurus": {"type": "herbivores", "tier": 4}, "argentinosaurus": {"type": "herbivores", "tier": 5}, "barsboldia": {"type": "herbivores", "tier": 4}, "camptosaurus": {"type": "herbivores", "tier": 1}, "carnotaurus": {"type": "carnivores", "tier": 2}, "ceratosaurus": {"type": "carnivores", "tier": 2}, "citipati": {"type": "herbivores", "tier": 2}, "compsognathus": {"type": "carnivores", "tier": 0}, "concavenator": {"type": "carnivores", "tier": 2}, "daspletosaurus": {"type": "carnivores", "tier": 3}, "deinocheirus": {"type": "herbivores", "tier": 4}, "deinonychus": {"type": "carnivores", "tier": 1}, "deinosuchus": {"type": "carnivores", "tier": 4}, "dilophosaurus": {"type": "carnivores", "tier": 2}, "dimetrodon": {"type": "carnivores", "tier": 3}, "dracoviper": {"type": "carnivores", "tier": 3}, "dryosaurus": {"type": "herbivores", "tier": 0}, "eotriceratops": {"type": "herbivores", "tier": 4}, "eurhinosaurus": {"type": "carnivores", "tier": 2}, "giganotosaurus": {"type": "carnivores", "tier": 4}, "hatzegopteryx": {"type": "carnivores", "tier": 2}, "iguanodon": {"type": "herbivores", "tier": 3}, "kaiwhekea": {"type": "carnivores", "tier": 2}, "kaprosuchus": {"type": "carnivores", "tier": 2}, "kelenken": {"type": "carnivores", "tier": 2}, "kentrosaurus": {"type": "herbivores", "tier": 2}, "kryptops": {"type": "carnivores", "tier": 3}, "lambeosaurus": {"type": "herbivores", "tier": 2}, "latenivenatrix": {"type": "carnivores", "tier": 1}, "maip": {"type": "carnivores", "tier": 3}, "megalania": {"type": "carnivores", "tier": 2}, "metriacanthosaurus": {"type": "carnivores", "tier": 2}, "miragaia": {"type": "herbivores", "tier": 3}, "moraquile": {"type": "carnivores", "tier": 4}, "mosasaurus": {"type": "carnivores", "tier": 4}, "nasutoceratops": {"type": "herbivores", "tier": 3}, "noviana": {"type": "carnivores", "tier": 3}, "nyctatyrannus": {"type": "carnivores", "tier": 3}, "ocepechelon": {"type": "carnivores", "tier": 3}, "ophis": {"type": "carnivores", "tier": 4}, "pachycephalosaurus": {"type": "herbivores", "tier": 2}, "parasaurolophus": {"type": "herbivores", "tier": 4}, "psittacosaurus": {"type": "herbivores", "tier": 1}, "pycnonemosaurus": {"type": "carnivores", "tier": 3}, "quetzalcoatlus": {"type": "carnivores", "tier": 2}, "rhamphorhynchus": {"type": "carnivores", "tier": 0}, "sachicasaurus": {"type": "carnivores", "tier": 4}, "sarcosuchus": {"type": "carnivores", "tier": 3}, "smilodon": {"type": "carnivores", "tier": 2}, "spinosaurus": {"type": "carnivores", "tier": 4}, "stegosaurus": {"type": "herbivores", "tier": 3}, "struthiomimus": {"type": "herbivores", "tier": 1}, "styracosaurus": {"type": "herbivores", "tier": 2}, "suchomimus": {"type": "carnivores", "tier": 3}, "susecdurus": {"type": "carnivores", "tier": 3}, "thalassodromeus": {"type": "carnivores", "tier": 1}, "therizinosaurus": {"type": "herbivores", "tier": 3}, "tyrannosaurus": {"type": "carnivores", "tier": 4}, "utahraptor": {"type": "carnivores", "tier": 2}, "yunnanosaurus": {"type": "herbivores", "tier": 3}, "yutyrannus": {"type": "carnivores", "tier": 3}};
 
 document$.subscribe(function () {
 
-  const dinosaurRegex = new RegExp(Object.keys(DINOSAUR_NAMES).join('|'), 'gi');
-  const elements = document.querySelectorAll('.md-content p, .md-content ul');
+  // Don't apply on tags.html.
+  if (document.location.pathname.includes('tags.html')) return
 
-  elements.forEach((span) => {
- 
-    const newContent = span.innerHTML.replace(dinosaurRegex, (match) => {
-      const tier = DINOSAUR_NAMES[match.toLowerCase()];
-      return `
-          <span class="tier-wrapper">
-            <span class="tier-name">
-              <a href="/docs/dinos/${match.toLowerCase()}">
-                ${match}
-              </a>
-            </span>
-            <span class="tier-badge tier-${tier}">
-              ${tier}
-            </span>
-          </span>
-        `;
-    });
+  const content = document.querySelector('.md-content');
+  const dinosaurRegex = new RegExp('\\b(' + Object.keys(DINOSAUR_NAMES).join('|') + ')\\b(?![^<>]*>)', 'gi');
 
-    span.innerHTML = newContent;
+  content.innerHTML = content.innerHTML.replace(dinosaurRegex, (match) => {
+    const name = match.toLowerCase();
+    const tier = DINOSAUR_NAMES[match.toLowerCase()].tier;
+    const type = DINOSAUR_NAMES[match.toLowerCase()].type;
+    return `
+      <span class="tier-wrapper">
+        <span class="tier-name">
+          <a href="/isla-nycta-rules-wip/pot/${type}/${tier}/${name}.html">
+            ${match}
+          </a>
+        </span>
+        <span class="tier-badge tier-${tier}">
+          ${tier}
+        </span>
+      </span>
+    `;
   });
-
 });
 
 /** 
@@ -33,6 +32,8 @@ document$.subscribe(function () {
  */
 
 document$.subscribe(function () {
+
+  return;
 
   document.querySelectorAll('li.md-nav__item span.md-ellipsis').forEach(span => {
 
